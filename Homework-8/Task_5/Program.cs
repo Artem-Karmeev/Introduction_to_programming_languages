@@ -1,0 +1,48 @@
+﻿//Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10)
+            {
+                Console.Write("0" + array[i, j] + " ");
+            }
+            else Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine("");
+    }
+}
+
+int[,] array = new int[4, 4];
+
+int num = 1;
+int i = 0;
+int j = 0;
+
+while (num <= 4 * 4)
+{
+    array[i, j] = num;
+
+    if (i <= j + 1 && i + j < 4 - 1)
+    {
+        ++j;
+    }
+    else if (i < j && i + j >= 4 - 1)
+    {
+        ++i;
+    }
+    else if (i >= j && i + j > 4 - 1)
+    {
+        --j;
+    }
+    else
+    {
+        --i;
+    }
+    ++num;
+}
+
+PrintArray(array);
